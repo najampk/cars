@@ -1,0 +1,968 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./src/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/swiper-bundle.min.css" />
+    <link rel="icon" href="./favicon.png" />
+    <title>UAE's 1st Comprehensive Cars Marketplace | Cars.me</title>
+    <script src="./src/jquery-3.6.0.min.js"></script>
+    <script src="./src/swiper-bundle.min.js"></script>
+     <script src="./src/cars-scripts.js"></script>
+    
+    <link href="./src/tooltipster.bundle.min.css" rel="stylesheet">
+    <script src="./src/tooltipster.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <script src="./src/alpine.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        .main-vid {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 85vh;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+       
+
+        /* ////////////////////////////// */ 
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        [x-cloak] {
+             display: none !important;
+         }
+
+
+         .c-lbl input:checked + svg {
+    display: block !important;
+}
+    </style>
+
+    <script>
+        $(document).ready(function () {
+ 
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                 $('.hideit').hide();
+            }
+ 
+            $('.tooltip').tooltipster({ position: 'bottom' });
+ 
+            $(document).on("click", '.sel-vehicle a', function (e) {
+                e.preventDefault();
+
+                $(".sel-vehicle a").removeClass('sel');
+                $(this).addClass('sel');
+
+            });
+
+
+            $(document).on("click", '.show-interior', function (e) {
+                e.preventDefault();
+
+                $(".btn-group-gal a").removeClass('sel');
+                $(this).addClass('sel');
+
+                $('.gallery').hide();
+                $('.interior').show();
+
+
+            });
+
+            $(document).on("click", '.show-gallery', function (e) {
+                e.preventDefault();
+
+                $(".btn-group-gal a").removeClass('sel');
+                $(this).addClass('sel');
+                $('.gallery').show();
+                $('.interior').hide();
+
+            });
+
+
+            
+ 
+            //////////////////////
+
+            var allBrands = ['abarth','acura','aixam','alfa_romeo','alpina','alpine','artega','aston_martin','audi','bentley','bmw','bugatti','buick','cadillac','caterham','chevrolet','chrysler','citroen','corvette','cupra','dacia','daewoo','daihatsu','dfsk','dodge','donkervoort','dr_automobiles','ds_automobiles','ferrari','fiat','fisker','ford','genesis','gmc','honda','hummer','hyundai','infiniti','isuzu','iveco','jaguar','jeep','kia','lada','lamborghini','lancia','land_rover','lexus','ligier','lincoln','lotus','mahindra','maybach','mazda','mclaren','mercedes_benz','mg','mini','mitsubishi','morgan','nio','nissan','opel','peugeot','polestar','pontiac','porsche','ram','renault','rimac','rolls_royce','rover','saab','seat','skoda','smart','ssangyong','subaru','suzuki','tesla','toyota','volkswagen','volvo','wiesmann'];
+
+var allMakes =[];
+
+
+   $(allBrands).each(function(){
+       var title = (this).replace('_',' ');
+       $('#allBrands').append('<div class="brand-list-drop"><img src="./images/brands/'+this+'.webp" /><p>'+title+'</p></div>');
+        
+
+   });
+
+
+
+            ///////////////////////
+
+        });
+        
+    </script>
+</head>
+
+<body class="bg-[#F5F5F7]" x-data="{ openMenu : false, openUserMenu : false }" :class="openMenu || openUserMenu ?  'overflow-hidden' : 'overflow-visible'">
+
+
+    <div class="right-panel" :class="openMenu ? 'translate-x-0' : 'translate-x-full'" :class="openMenu ? 'visible' : 'invisible' " x-cloak>
+
+        <div class="top flex justify-between border-b py-4 px-4 bg-slate-200">
+          <div><img src="./images/cars.meb.png" class="w-32 h-auto" /></div>
+          <a href="javascript:void(0);" @click="openMenu = !openMenu">
+            <svg class="h-3.5 w-3.5 overflow-visible stroke-slate-900 hover:stroke-slate-400" fill="none"
+              stroke-width="1.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0L14 14M14 0L0 14"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="px-4 py-5">
+        <ul class="panel-nav">
+            <li><a href="javascript:void(0);">Sell Car</a></li>
+            <li><a href="listing.html">Used Cars</a></li>
+            <li><a href="javascript:void(0);">New Cars</a></li>        
+            <li><a href="dealers-home.html">Dealers</a></li>        
+            <li><a href="javascript:void(0);">Blogs</a></li>
+            <li><a href="javascript:void(0);">About Us</a></li>
+            <li><a href="javascript:void(0);">Contact Us</a></li>
+            <li><a href="javascript:void(0);">Spareparts</a></li>
+            <li><a href="javascript:void(0);" class="font-bold">Log In</a></li>
+        </ul>
+        </div>
+    </div>
+
+    <!-- <div @click="openUserMenu = !openUserMenu"
+    class="w-screen h-screen bg-slate-900   transition-all duration-700 opacity-70 fixed z-[90]"
+    :class="openUserMenu ? 'block' : 'hidden' " x-cloak></div> -->
+
+
+
+     <nav class="hidden1 w-full bg-white shadow-xl  transition-all duration-500 h-20 px-5 flex items-center justify-between hidden1 relative  z-30 group">
+
+            <div class="flex">
+                <button type="button" @click="openMenu = !openMenu"
+                class="-my-1  mr-2 flex h-8 w-8 items-center justify-center xl:hidden"><svg viewBox="0 0 24 24"
+                  class="h-8 w-8 stroke-slate-300">
+                  <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" stroke-width="1.5"
+                    stroke-linecap="round"></path>
+                </svg></button>
+                <img src="./images/cars.meb.png" class="backHome" @click="backHome();">
+            
+                <ul class="items-center ml-10 divide-x text-slate-800 divide-slate-300  divide-opacity-70 text-lg font-normal hidden xl:flex">
+                
+                    <li><a href="listing.html" class="px-3 hover:text-red-600">Used Cars</a></li>
+                    <li><a href="javascript:void(0);" class="px-3 hover:text-red-600">New Cars</a></li>
+                    <li><a href="dealers-home.html" class="px-3 hover:text-red-600">Dealers</a></li>
+                    <!-- <li><a href="javascript:void(0);" class="px-3 hover:text-red-600">Value my Car</a></li> -->
+                    <li><a href="javascript:void(0);" class="px-3 hover:text-red-600">News & Reviews</a></li>
+                    <li><a href="javascript:void(0);" class="px-3 hover:text-red-600">About Us</a></li>
+                </ul>
+ 
+            </div>
+           
+            <div class="flex items-center">
+
+                 <a class="hidden sm:flex w-auto h-10 rounded-md px-8 flex items-center justify-center  
+                bg-gradient-to-tr from-[#3e47dd] to-[#262a98] text-white font-semibold  text-xl mr-12" href="javascript:void(0);">Sell Car</a>
+ 
+                <div class="flex mr-0 sm:mr-6">
+                    <a title="Favorite Cars" class="tooltip w-10  h-20 flex items-center justify-center  text-slate-500 hidden sm:flex" href="javascript:void(0);">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </a>
+                    <a title="Alerts" class="hidden sm:flex w-10 tooltip  h-20 flex items-center justify-center  text-slate-500 relative" href="javascript:void(0);#">
+                        <span class="w-2 h-2 bg-red-500 rounded-full absolute top-6 right-2"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                        </svg>
+                    </a>
+                    <div title="My Cars.me" class="relative tooltip" x-data="{ isOpen: false, timeout: null }" 
+                    x-on:click="isOpen = true; clearTimeout(timeout)"
+                    x-on:mouseleave="timeout = setTimeout(() => { isOpen = false }, 100)">
+                    <a class="w-12 h-20 flex items-center justify-center   text-slate-500" href="javascript:void(0);" >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </a>
+                                <div class="absolute rounded-lg sm:rounded-t-none bg-gray-100 border shadow text-center sm:p-5 p-3 w-72 right-0 top-20"
+                                    x-show="isOpen" x-transition:enter="transition ease-out duration-100"
+                                    x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100"
+                                    x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+                                    x-transition:leave-end="transform opacity-0 scale-95">
+                                
+                                    <h4 class="font-semibold">Welcome to CARS.me</h4>
+                                    <a class="w-full h-auto mt-3 rounded-md px-8 py-2 flex items-center justify-center  
+                                                bg-gradient-to-tr from-[#3e47dd] to-[#262a98] text-white font-semibold  text-base" href="javascript:void(0);">Login</a>
+                                
+                                    <p class="text-base mt-3 text-center text-gray-500">Don't have an account? <a href="javascript:void(0);"
+                                            class="font-bold text-violet-600 hover:underline">Register</a></p>
+                                
+                                    <ul class="drop-links">
+                                        <li>
+                                            <p  class="text-sm sm:text-base"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-5 h-5 inline ">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                                </svg>
+                                                My Cars [0] - <a href="javascript:void(0);" class="text-blue-700 hover:underline">Add</a></p>
+                                        </li>
+                                        <li>
+                                            <p class="text-sm sm:text-base"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-5 h-5 inline">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                                                </svg>
+                                                Saved Searches</p>
+                                        </li>
+                                        <li>
+                                            <p  class="text-sm sm:text-base"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="currentColor" class="w-5 h-5 inline">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                                Settings</p>
+                                        </li>
+                                    </ul>                                
+                                </div>
+                    </div>
+                     
+                        
+                    
+                        
+                </div>
+                    <div class="flex"  >
+                        <div class="bar-flags h-20 w-12" x-data="{ open: false }" >
+                        
+                            <div class="sel-flg tooltip" title="UAE - Change Region / Language / Currency" @click="open = !open">
+                                <img src="./images/flag-shine.png" class="shine">
+                                <img src="./images/flg-uae.png" class="cflag">
+                            </div>
+  
+                            <!-- ///////////////////////// -->
+ 
+
+                    <div  @keydown.window.escape="open = false"   x-show="open" class="fixed z-10 inset-0 overflow-y-auto" x-ref="dialog" aria-modal="true">
+                        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                          
+                            <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-stone-500 bg-opacity-75 transition-opacity" @click="open = false" aria-hidden="true" x-cloak>
+                          </div>
+                  
+                        
+                          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">​</span>
+                          
+                            <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-lg p-2  text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full sm:p-5 h-auto" x-cloak>
+                   
+                                     
+                                        <div class="flex gap-x-5 bg-gradient-to-t from-stone-200 via-transparent border shadow p-4 rounded-lg">
+                                                <div class="sel-reg">
+                                                    <img src="./images/flag-shine.png" class="shineb">
+                                                    <img src="./images/flg-uae.png" class="cflagb">
+                                                </div>
+                                                
+                                                <div class="flex flex-col space-y-0">
+                                                    <h3 class="font-bold text-xl">Selected Region </h3>
+                                                    <h4 class="font-bold sm:text-2xl text-xl text-indigo-700">United Arab Emirates</h4>
+                                                    <div class="flex divide-x"><p class="pr-2">Currency : <span class="font-bold text-red-600">AED</span></p>
+                                                        <p class="pl-2" >Language : <span class="font-bold text-slate-600">ENGLISH</span></p></div>
+                                                </div>
+                                        </div>
+
+                                           
+                                            <div class="mx-auto w-full text-center">
+                                                <!-- <h2 class="font-bold text-lg text-slate-500 mt-3">Select Language</h2> -->
+                                                <div class="btn-group-c mt-4 mx-auto">
+                                                <a href="javascript:void(0);" class="w-36 sel">ENGLISH</a>
+                                                <a href="javascript:void(0);" class="font-bold text-2xl " style=" font-family: 'Titillium Web', sans-serif;">العربية</a>                                            
+                                                </div>
+                                            </div>
+                                            <h2 class="font-bold text-lg text-slate-500 mt-4 border-t text-center w-full">Select Country</h2>
+                                            <div class="reg-flags mt-3 gap-x-2 sm:gap-x-4">
+                                               
+                                                <div class="tooltip" title="UAE">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-uae.png" class="cflag-n sel border-2 ring-4 ring-indigo-400    border-white">
+                                                </div>
+                                                <div class="tooltip" title="Bahrain">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-bahrain.png" class="cflag-n">
+                                                </div>
+                                                <div class="tooltip" title="Egypt">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-egypt.png" class="cflag-n">
+                                                </div>
+                                                <div class="tooltip" title="Jordan">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-jordan.png" class="cflag-n">
+                                                </div>
+                                                <div class="tooltip" title="Kuwait">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-kuwait.png" class="cflag-n">
+                                                </div>
+                                                <div class="tooltip" title="Libya">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-libya.png" class="cflag-n">
+                                                </div>
+                                                <div class="tooltip" title="Sudan">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-sudan.png" class="cflag-n">
+                                                </div>
+                                                <div class="tooltip" title="Morocco">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-mrooco.png" class="cflag-n">
+                                                </div>
+                                                
+                                                <div class="tooltip" title="Yemen">
+                                                    <img src="./images/flag-shine.png" class="shine-n">
+                                                    <img src="./images/flg-yemen.png" class="cflag-n">
+                                                </div>
+                                                 
+                                
+                                            </div>
+
+                                            <div class="mx-auto w-full text-center">
+                                                <h2 class="font-bold text-lg text-slate-500 mt-0 border-t">Select Currency</h2>
+                                                <div class="btn-group-d mt-2 mx-auto">
+                                                <a href="javascript:void(0);" class="sel w-12">AED</a>
+                                                <a href="javascript:void(0);" class="w-auto">USD</a>
+                                                <a href="javascript:void(0);">EUR</a> 
+                                                <a href="javascript:void(0);">SAR</a> 
+                                                <a href="javascript:void(0);">QAR</a> 
+                                                <a href="javascript:void(0);">KWD</a> 
+                                                <a href="javascript:void(0);">EGP</a>     
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                     
+                           
+                            </div>
+                          
+                        </div>
+                      </div>
+                     
+  
+                      <!-- ///////////////////////// -->
+                            
+                            
+
+
+                        </div>
+                        
+                        <div class="flex justify-center items-center h-20 w-12 hidden sm:flex">
+                        
+                            <div class="tooltip text-slate-800" title="UAE - Dirham">
+                                AED
+                            </div>
+                        
+                        </div>
+                     </div>
+        
+        </div>
+ 
+     </nav>
+     <!-- style="background:url('./images/home-3.jpg') center center no-repeat; background-size: cover;" -->
+     <header class="hidden1 h-96 w-full border-t  flex gap-x-1 items-center justify-center bg-slate-50 relative">
+        <!-- <div class="w-full h-80 bg-gradient-to-t from-stone-900 via-transparent absolute z-20"></div>
+        <div class="w-full h-80 bg-stone-700 bg-opacity-40 absolute z-10"></div> -->
+        
+            <div class="gallery flex w-full gap-x-1 overflow-hidden overflow-x-scroll">
+            <img src="./images/car/1.jpg" />
+            <img src="./images/car/2.jpg" />
+            <img src="./images/car/3.jpg" />
+            <img src="./images/car/4.jpg" />
+            <img src="./images/car/5.jpg" />
+            <img src="./images/car/6.jpg" />
+            <img src="./images/car/7.jpg" />
+            <img src="./images/car/8.jpg" />
+            <img src="./images/car/9.jpg" />
+            <img src="./images/car/10.jpg" />
+            <img src="./images/car/11.jpg" />
+            <img src="./images/car/12.jpg" />
+            <img src="./images/car/13.jpg" />
+            <img src="./images/car/14.jpg" />
+            <img src="./images/car/15.jpg" />
+            <img src="./images/car/16.jpg" />
+            <img src="./images/car/17.jpg" />
+        </div>
+ 
+<iframe class="interior hidden" src="https://www.eyerevolution.co.uk/tours/discovery-2016/" width="100%" height="100%" style="width:100%; height: 100%;"></iframe>
+
+    
+ 
+
+
+            <div class="text-center -mt-5  absolute -bottom-5 z-20">
+                <div class="btn-group-gal">
+                 <a href="javascript:void(0);" class="sel show-gallery relative"> 
+                 Pictures <span class="p-1 rounded-full absolute tetx-xm font-normal z-10 top-3 right-3 bg-slate-300 text-black flex text-xs items-center justify- hidden">18</span></a>               
+                 <a href="javascript:void(0);"   class="tooltip show-interior"> 
+                360° Interior </a>
+                   
+                 <a href="javascript:void(0);"> 
+                360° Exterior</a> 
+                 <!-- <a href="#" class="hidden">Ajman</a> 
+                 <a href="#" class="hidden">Ras Al Khaimah</a>
+                 <a href="#" class="hidden">Fujairah</a>
+                 <a href="#" class="hidden">Umm al-Quwain </a>        -->
+               </div>
+             </div>
+     </header>
+
+
+
+    
+    
+
+<section class="py-10  hidden1" style="background:url('./images/bg-a.png') 0 0 no-repeat; background-size:cover;">
+        <div class="container px-5 mx-auto">
+        <div class="sec-heading">
+            <h2 class="font-bold" style="font-weight:bold;">Toyota Corolla 2019</h2>
+            <ul class="flex mx-auto   items-center justify-center mt-2 text-slate-600">
+                
+                    <div class="text-center">
+                <li class=" px-3 text-xl font-bold text-red-600">AED 145,000</li>
+
+                <li class=" px-3 text-lg text-slate-600 block"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                   Jebel Ali, Dubai </li>
+
+               </div>
+                
+               
+              
+        </ul>
+
+        <div class="social">
+            <a href="#" title="Share" class="tooltip group">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-slate-500 group-hover:text-black">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                  </svg>
+                  
+            </a>
+            <a href="#" title="Save" class="tooltip group">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9 text-slate-500 group-hover:text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                  </svg>
+                  
+            </a>
+            <a href="#" title="WhatsApp" class="tooltip group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="w-8 h-auto fill-slate-500 group-hover:fill-green-500"
+                    viewBox="0 0 25 25" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12.7272 24.3561C10.5753 24.3561 8.55361 23.8061 6.79472 22.8408L0 25L2.215 18.4661C1.09778 16.6308 0.454167 14.4786 0.454167 12.1781C0.454167 5.45222 5.94889 0 12.7275 0C19.5053 0 25 5.45222 25 12.1781C25 18.9039 19.5056 24.3561 12.7272 24.3561ZM12.7272 1.93944C7.03722 1.93944 2.40889 6.5325 2.40889 12.1781C2.40889 14.4183 3.13917 16.4931 4.37417 18.1811L3.08528 21.9833L7.05028 20.7231C8.67972 21.7928 10.6314 22.4167 12.7272 22.4167C18.4164 22.4167 23.0456 17.8239 23.0456 12.1783C23.0456 6.53278 18.4164 1.93944 12.7272 1.93944ZM18.9244 14.9828C18.8489 14.8586 18.6483 14.7836 18.3481 14.6344C18.0469 14.4853 16.5675 13.7628 16.2922 13.6636C16.0161 13.5642 15.8153 13.5139 15.615 13.8128C15.4147 14.1117 14.8381 14.7836 14.6622 14.9828C14.4867 15.1822 14.3114 15.2072 14.0106 15.0578C13.71 14.9086 12.7406 14.5933 11.5911 13.5764C10.6969 12.7853 10.0931 11.8086 9.91778 11.5094C9.74222 11.2108 9.89917 11.0494 10.0497 10.9008C10.185 10.7669 10.3506 10.5522 10.5011 10.3781C10.6517 10.2036 10.7017 10.0794 10.8017 9.88C10.9022 9.68083 10.8519 9.50667 10.7767 9.35694C10.7014 9.20778 10.0994 7.73889 9.84889 7.14111C9.59833 6.54389 9.34806 6.64333 9.17222 6.64333C8.99667 6.64333 8.79611 6.61833 8.59556 6.61833C8.395 6.61833 8.06889 6.69306 7.79306 6.99167C7.5175 7.29056 6.74056 8.01278 6.74056 9.48139C6.74056 10.9503 7.81806 12.3694 7.96889 12.5683C8.11917 12.7672 10.0494 15.8794 13.1075 17.0747C16.1667 18.2697 16.1667 17.8711 16.7183 17.8214C17.2692 17.7717 18.4975 17.0994 18.7489 16.4025C18.9992 15.705 18.9992 15.1072 18.9244 14.9828Z">
+                    </path>
+                </svg>
+            </a>
+            
+            <a href="#" title="Call" class="tooltip group">
+
+                <svg class="w-8 h-auto fill-slate-500 group-hover:fill-blue-500"   x="0px" y="0px"
+ viewBox="0 0 53.942 53.942" style="enable-background:new 0 0 53.942 53.942;" xml:space="preserve">
+<path d="M53.364,40.908c-2.008-3.796-8.981-7.912-9.288-8.092c-0.896-0.51-1.831-0.78-2.706-0.78c-1.301,0-2.366,0.596-3.011,1.68
+c-1.02,1.22-2.285,2.646-2.592,2.867c-2.376,1.612-4.236,1.429-6.294-0.629L17.987,24.467c-2.045-2.045-2.233-3.928-0.632-6.291
+c0.224-0.309,1.65-1.575,2.87-2.596c0.778-0.463,1.312-1.151,1.546-1.995c0.311-1.123,0.082-2.444-0.652-3.731
+c-0.173-0.296-4.291-7.27-8.085-9.277c-0.708-0.375-1.506-0.573-2.306-0.573c-1.318,0-2.558,0.514-3.49,1.445L4.7,3.986
+c-4.014,4.013-5.467,8.562-4.321,13.52c0.956,4.132,3.742,8.529,8.282,13.068l14.705,14.705c5.746,5.746,11.224,8.66,16.282,8.66
+c0,0,0,0,0.001,0c3.72,0,7.188-1.581,10.305-4.698l2.537-2.537C54.033,45.163,54.383,42.833,53.364,40.908z"/>
+</svg>
+
+                 
+            </a>
+        </div>
+        </div>
+
+        <ul class="nearby-bx px-0 ">
+
+            <li>
+                <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 mx-auto">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    </svg>
+                    <span>2016</span>
+                </div>
+            </li>
+            <li><div><img src="./images/brands/honda.webp" /><span>Honda Civic</span></div></li>
+            <li>
+                <div>
+                  <svg class="w-6 h-6 text-slate-400 mx-auto "  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.37726 1.5H10.623C11.7793 1.5 12.5 2.21744 12.5 2.86584V15.5H3.5V2.86584C3.5 2.2175 4.2209 1.5 5.37726 1.5Z" stroke="#485885" stroke-linecap="round"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M10 5.5H6H10Z" stroke="#485885" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M12.5 12C12.5 12 15.5 12 15.5 8.5C15.5 5 15.5 4 15.5 4" stroke="#485885" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <line x1="1.5" y1="15.5" x2="14.5" y2="15.5" stroke="#485885" stroke-linecap="round" stroke-linejoin="round"></line>
+                      </svg> 
+                  <span>Petrol</span>
+                  <!-- <p>4.5 KM</p> -->
+                </div>
+              </li>
+
+            
+            <li>
+              <div>
+                <svg  class="w-8 h-8 text-slate-400  mx-auto"  viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 13.4877L3.6 2.6877"  stroke="#485885"  stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M14 13.4877L12.4 2.6877" stroke="#485885" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8 13V10" stroke="#485885" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8 7V4" stroke="#485885" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg> 
+                <span>56,000 KM</span>
+                 
+              </div>
+            </li>
+            <li>
+              <div>
+                <img src="./images/5006380.png" class="w-24">
+                <span>Sun Roof</span>
+                <!-- <p>4.5 KM</p> -->
+              </div>
+            </li>
+            <li>
+              <div>
+                 
+                <span>Transmission</span>
+                <!-- <p>4.5 KM</p> -->
+              </div>
+            </li>
+            <li>
+              <div>
+               
+                <span>Color</span>
+                <!-- <p>4.5 KM</p> -->
+              </div>
+            </li>
+            <li>
+              <div>
+                 
+                <span>Navigation</span>
+                <!-- <p>4.5 KM</p> -->
+              </div>
+            </li>
+          </ul> 
+
+
+        <div class="sec-bx">
+                <div class="title">
+                  <h2>Details</h2> 
+                </div>
+            <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+
+        </div>
+
+       
+            
+               
+           
+                <div class="grid grid-cols-2 gap-5">
+                <div class="sec-bx">
+                <div class="title">
+                  <h2>Features</h2> 
+                </div>
+
+                <ul class="fr-bx p-5">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                    </svg><span>ABS</span></li>
+
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Anti-theft System </span></li>
+
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Apple/Android Auto</span></li>
+
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>AUX / Bluetooth</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Cruise Control</span></li>
+
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>EBD</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Fog Lights</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Front Rear Sensors</span></li>
+
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Keyless Entry</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Keyless Start</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Multi-function Steering</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Panoramic Roof </span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Power Locks </span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Power Mirrors </span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Power Steering</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Power Windows</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Rear View Camera</span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Touch Screen </span></li>
+                      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                      </svg><span>Wheel Rims 17" </span></li>
+
+                    </ul>
+ 
+                  
+
+                    
+                </div>
+
+                    <div class="sec-bx">
+                    <div class="title">
+                      <h2>Specifications</h2>
+                    </div>
+
+                    <ul class="fr-bx p-5">
+                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg><span>ABS</span></li>
+    
+                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Anti-theft System </span></li>
+    
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Apple/Android Auto</span></li>
+    
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>AUX / Bluetooth</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Cruise Control</span></li>
+    
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>EBD</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Fog Lights</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Front Rear Sensors</span></li>
+    
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Keyless Entry</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Keyless Start</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Multi-function Steering</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Panoramic Roof </span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Power Locks </span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Power Mirrors </span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Power Steering</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Power Windows</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Rear View Camera</span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Touch Screen </span></li>
+                          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                          </svg><span>Wheel Rims 17" </span></li>
+    
+                        </ul>
+                        
+                    </div>
+                </div>
+
+                <div class="mt-4 mx-auto text-center">
+                <a href="javascript:void(0);" class=" px-4 text-xl font-semibold py-2 text-white rounded-md bg-red-600 shadow mx-auto">Download PDF Brochure</a>
+            </div>
+
+
+        </div>
+
+  
+
+</section>
+ 
+ 
+    
+  <section id="sec-footer" class="sec-footer hidden1 border-t relative group" style="background:url('./images/home-6.jpg') center center no-repeat; background-size: cover; background-attachment: fixed;" >
+    <div class="w-full- h-full bg-gradient-to-t from-stone-900 via-stone-900 to-stone-900 duration-300 opacity-50 group-hover:opacity-80  absolute inset-0 z-10   "></div>
+    <div class="container mx-auto px-5 z-20 relative">
+    <div class="grid grid-cols-2 md:grid-cols-2   lg:grid-cols-4 text-white">
+        <div>
+            <h2 class="text-lg sm:text-xl font-semibold py-2">About US</h2>
+            <div class="flex flex-col space-y-3 sm:space-y-2 text-sm sm:text-base pr-5">
+               
+              <a href="javascript:void(0);">Used Cars</a>
+              <a href="javascript:void(0);">New Cars</a>
+              <a href="javascript:void(0);">Featured Cars</a>
+              <a href="javascript:void(0);">Spareparts</a>
+              <a href="javascript:void(0);">Dealers</a>
+              <a href="javascript:void(0);">Virtual Showrooms</a>
+              <a href="javascript:void(0);">360° Spins</a>
+              <a href="javascript:void(0);">Cars Comparisons</a>
+               
+            </div>
+        </div>
+        <div>
+            <h2 class="text-lg sm:text-xl font-semibold py-2">Services</h2>
+            <div class="flex flex-col space-y-3 sm:space-y-2 text-sm sm:text-base">
+                <a href="javascript:void(0);">Used Cars</a>
+                <a href="javascript:void(0);">New Cars</a>
+                <a href="javascript:void(0);">Featured Cars</a>
+                <a href="javascript:void(0);">Spareparts</a>
+                <a href="javascript:void(0);">Dealers</a>
+                <a href="javascript:void(0);">Virtual Showrooms</a>
+                <a href="javascript:void(0);">360° Spins</a>
+                <a href="javascript:void(0);">Car Comparisons</a>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-lg sm:text-xl font-semibold py-2">CARS.ME</h2>
+            <div class="flex flex-col space-y-3 sm:space-y-2 text-sm sm:text-base">
+                <a href="javascript:void(0);">About Us</a>        
+                <a href="javascript:void(0);">Meet with CEO</a>
+                <a href="javascript:void(0);">Our Services</a>
+                <a href="javascript:void(0);">News & Reviews</a>
+                <a href="javascript:void(0);">Media Center</a>       
+                <a href="javascript:void(0);">Our Team</a>
+                <a href="javascript:void(0);">Offices</a>
+                <a href="javascript:void(0);">Careers</a>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-lg sm:text-xl font-semibold py-2">Contact Us</h2>
+
+            <div class="flex-1">
+
+              <div class="block mt-2">
+                <h2 class="text-base font-bold text-slate-400">
+                  DUBAI - UAE - <span class="text-sm font-medium text-indigo-600">
+
+                    Head Office
+
+                  </span>
+
+                </h2>
+                <p class="mt-3 sm:text-base text-sm text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 -mt-1 mr-1 inline" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg> Cars.me - L.L.C Office No. 516, The Binary Tower Al Abraj Street, opposite
+                  The Oberoi Hotel P.O.Box : 63414 Business Bay, Dubai
+                </p>
+                <p class="text-base mt-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-gray-400 -mt-1 mr-1 inline">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                  </svg><a href="tel:+971585520227">+971 585 520 227</a></p>
+                <p class="text-base mt-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-gray-400 -mt-1 mr-1 inline">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                  <a href="mailto:contact@cars.me">
+                    contact@cars.me</a></p>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+ 
+  
+    <footer  class="pg-footer border-t border-stone-300 py-10 bg-zinc-100 hidden1" >
+       
+      
+       
+        <div>
+            <div class="ftr-flags">
+
+                <div class="tooltip" title="UAE">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-uae.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Bahrain">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-bahrain.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Egypt">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-egypt.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Jordan">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-jordan.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Kuwait">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-kuwait.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Libya">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-libya.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Sudan">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-sudan.png" class="cflag">
+                </div>
+                <div class="tooltip" title="Morocco">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-mrooco.png" class="cflag">
+                </div>
+                
+                <div class="tooltip" title="Yemen">
+                    <img src="./images/flag-shine.png" class="shine">
+                    <img src="./images/flg-yemen.png" class="cflag">
+                </div>
+                 
+
+            </div>
+          <div class="flex gap-x-2 top-social relative top-0 items-center justify-center">
+            <a href="javascript:void(0);" class="facebook group group-hover:fill-slate-50 hover:bg-[#4267B2] hover:border-[#4267B2]"><svg
+                version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-auto fill-slate-400 group-hover:fill-slate-50" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+                <path id="XMLID_835_" d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064
+                 c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996
+                 V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545
+                 C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703
+                 c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z" />
+              </svg></a>
+             
+            <a href="javascript:void(0);" class="instagram group group-hover:fill-slate-50 hover:bg-[#405DE6] hover:border-[#405DE6]"><svg
+                width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-auto fill-slate-400 group-hover:fill-slate-50">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z" />
+                <circle cx="11.994" cy="11.979" r="3.003" /></svg></a>
+      
+      
+            <a href="javascript:void(0);" class="youtube group group-hover:fill-slate-50 hover:bg-[#FF0000] hover:border-[#FF0000]"><svg
+                version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" class="w-5 h-auto fill-slate-400 group-hover:fill-slate-50" viewBox="0 0 310 310"
+                style="enable-background:new 0 0 310 310;" xml:space="preserve">
+                <path id="XMLID_823_" d="M297.917,64.645c-11.19-13.302-31.85-18.728-71.306-18.728H83.386c-40.359,0-61.369,5.776-72.517,19.938
+                 C0,79.663,0,100.008,0,128.166v53.669c0,54.551,12.896,82.248,83.386,82.248h143.226c34.216,0,53.176-4.788,65.442-16.527
+                 C304.633,235.518,310,215.863,310,181.835v-53.669C310,98.471,309.159,78.006,297.917,64.645z M199.021,162.41l-65.038,33.991
+                 c-1.454,0.76-3.044,1.137-4.632,1.137c-1.798,0-3.592-0.484-5.181-1.446c-2.992-1.813-4.819-5.056-4.819-8.554v-67.764
+                 c0-3.492,1.822-6.732,4.808-8.546c2.987-1.814,6.702-1.938,9.801-0.328l65.038,33.772c3.309,1.718,5.387,5.134,5.392,8.861
+                 C204.394,157.263,202.325,160.684,199.021,162.41z" />
+              </svg></a>
+            <a href="javascript:void(0);" class="whatsapp group group-hover:fill-slate-50 hover:bg-[#25D366] hover:border-[#25D366]"><svg
+                width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-auto fill-slate-400 group-hover:fill-slate-50">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path fill-rule="nonzero"
+                  d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z" />
+              </svg>
+            </a>
+            <a href="javascript:void(0);" class="telegram group group-hover:fill-slate-50 hover:bg-[#229ED9] hover:border-[#229ED9]"><svg
+                width="48px" height="48px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-auto fill-slate-400 group-hover:fill-slate-50">
+                <path
+                  d="M41.4193 7.30899C41.4193 7.30899 45.3046 5.79399 44.9808 9.47328C44.8729 10.9883 43.9016 16.2908 43.1461 22.0262L40.5559 39.0159C40.5559 39.0159 40.3401 41.5048 38.3974 41.9377C36.4547 42.3705 33.5408 40.4227 33.0011 39.9898C32.5694 39.6652 24.9068 34.7955 22.2086 32.4148C21.4531 31.7655 20.5897 30.4669 22.3165 28.9519L33.6487 18.1305C34.9438 16.8319 36.2389 13.8019 30.8426 17.4812L15.7331 27.7616C15.7331 27.7616 14.0063 28.8437 10.7686 27.8698L3.75342 25.7055C3.75342 25.7055 1.16321 24.0823 5.58815 22.459C16.3807 17.3729 29.6555 12.1786 41.4193 7.30899Z" />
+              </svg></a>
+          </div>
+          <div>
+            <div class="ftr-links">
+              <a href="javascript:void(0);">Terms of Use</a>
+              <a href="javascript:void(0);">Privacy Policy</a>
+              <a href="javascript:void(0);">Disclaimer </a>
+              <a href="javascript:void(0);">Site Map </a>
+            </div>
+            <p class="copy">Copyright &copy; 2022 - CARS.ME - Imperial Motors UAE</p>
+          </div>
+        </div>
+      </footer>
+ 
+    
+    <div class="chat-msg hidden1">
+        <div
+            class="chat-msg-tip">
+            <p>WhatsApp</p>
+            <div></div>
+        </div>
+        <a href="https://wa.me/+971585520227">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="w-8 h-auto fill-white" viewBox="0 0 25 25" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7272 24.3561C10.5753 24.3561 8.55361 23.8061 6.79472 22.8408L0 25L2.215 18.4661C1.09778 16.6308 0.454167 14.4786 0.454167 12.1781C0.454167 5.45222 5.94889 0 12.7275 0C19.5053 0 25 5.45222 25 12.1781C25 18.9039 19.5056 24.3561 12.7272 24.3561ZM12.7272 1.93944C7.03722 1.93944 2.40889 6.5325 2.40889 12.1781C2.40889 14.4183 3.13917 16.4931 4.37417 18.1811L3.08528 21.9833L7.05028 20.7231C8.67972 21.7928 10.6314 22.4167 12.7272 22.4167C18.4164 22.4167 23.0456 17.8239 23.0456 12.1783C23.0456 6.53278 18.4164 1.93944 12.7272 1.93944ZM18.9244 14.9828C18.8489 14.8586 18.6483 14.7836 18.3481 14.6344C18.0469 14.4853 16.5675 13.7628 16.2922 13.6636C16.0161 13.5642 15.8153 13.5139 15.615 13.8128C15.4147 14.1117 14.8381 14.7836 14.6622 14.9828C14.4867 15.1822 14.3114 15.2072 14.0106 15.0578C13.71 14.9086 12.7406 14.5933 11.5911 13.5764C10.6969 12.7853 10.0931 11.8086 9.91778 11.5094C9.74222 11.2108 9.89917 11.0494 10.0497 10.9008C10.185 10.7669 10.3506 10.5522 10.5011 10.3781C10.6517 10.2036 10.7017 10.0794 10.8017 9.88C10.9022 9.68083 10.8519 9.50667 10.7767 9.35694C10.7014 9.20778 10.0994 7.73889 9.84889 7.14111C9.59833 6.54389 9.34806 6.64333 9.17222 6.64333C8.99667 6.64333 8.79611 6.61833 8.59556 6.61833C8.395 6.61833 8.06889 6.69306 7.79306 6.99167C7.5175 7.29056 6.74056 8.01278 6.74056 9.48139C6.74056 10.9503 7.81806 12.3694 7.96889 12.5683C8.11917 12.7672 10.0494 15.8794 13.1075 17.0747C16.1667 18.2697 16.1667 17.8711 16.7183 17.8214C17.2692 17.7717 18.4975 17.0994 18.7489 16.4025C18.9992 15.705 18.9992 15.1072 18.9244 14.9828Z">
+                </path>
+            </svg>
+           
+            <span></span>
+        </a>
+      
+      </div>
+
+ 
+
+    </body>
+    </html>
